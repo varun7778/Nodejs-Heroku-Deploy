@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/css/edit_apt.css">
+
+  <!--========== IONICONS ==========-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <title><%= 'Edit '+locals.data.apt_name %></title>
+</head>
+<body>
+  <form action = '<%= '/admin/update_'+locals.data.apt_name %>' method="POST" class="my-form">
+    <div class="container">
+      <h1><%=locals.data.apt_name %></h1>
+      <ul>
+        <li>
+          <div class="grid grid-2">
+            <input type="text" placeholder="Apt Name" name="apt_name" value = '<%= locals.data.apt_name %>' required>  
+            <input type="text" placeholder="Apt Area" name="apt_area" value = '<%= locals.data.apt_area %>' required>
+          </div>
+        </li>
+        <li>
+          <textarea type="text" placeholder="About the Apartment" name="about_apt" required><%= locals.data.about_apt %></textarea>
+        </li>
+        <li>
+          <textarea type="text" placeholder="Apartment address" name="apt_address" required><%= locals.data.apt_address %></textarea>
+        </li>  
+        <li>
+          <input type="text" placeholder="Googlemap link" name="gmap_link" value = <%= locals.data.gmap_link %> required></input>
+        </li> 
+        <li>
+          <div class="grid grid-2">
+            <input type="text" placeholder="Owner Name" name="owner_name" value = <%= locals.data.owner_name %> required>  
+            <% if(locals.data.completed_on !== null){ %>
+               <input type="date" placeholder="Apt completion date" name="completed_on" value = <%= locals.data.completed_on.toISOString().substring(0, 10) %>>
+             <% } else{ %>  
+               <input type="date" placeholder="Apt completion date" name="completed_on">
+            <% } %>
+            
+          </div>
+        </li>
+
+        <li>
+          <span>Uplad the brochure to this link: <a href="https://drive.internxt.com" target="_blank">Here</a></span>
+        </li>
+
+        <li>
+          <input placeholder="Brochure download link" name="brochure" value = <%= locals.data.brochure %> required></input>
+        </li> 
+
+        <li>
+          <span>Uplad all individual images to this link: <a href="https://varun-anusheel.imgbb.com/" target="_blank">Here</a></span>
+        </li>
+                  
+        <li>
+          <input placeholder="Image1 Link" name="image1_link" value = <%= locals.data.images.img1 %> required></input>
+        </li> 
+        <li>
+          <input placeholder="Image2 Link" name="image2_link" value = <%= locals.data.images.img2 %> required></input>
+        </li> 
+        <li>
+          <input placeholder="Image3 Link" name="image3_link" value = <%= locals.data.images.img3 %> required></input>
+        </li> 
+        <li>
+          <input placeholder="Image4 Link" name="image4_link" value = <%= locals.data.images.img4 %> required></input>
+        </li> 
+        <li>
+          <input placeholder="Image5 Link" name="image5_link" value = <%= locals.data.images.img5 %> required></input>
+        </li> 
+        <li>
+          <input placeholder="Image6 Link" name="image6_link" value = <%= locals.data.images.img6 %> required></input>
+        </li>                 
+        <li>
+          <div class="grid grid-3">
+            <div class="required-msg">REQUIRED FIELDS</div>
+            <button class="btn-grid" type="submit">
+              <span class="back">
+                <ion-icon name="cloud-upload-outline" class="icon"></ion-icon>
+              </span>
+              <span class="front">SUBMIT</span>
+            </button>
+            <button class="btn-grid" type="reset">
+              <span class="back">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+              </span>
+              <span class="front">RESET</span>
+            </button> 
+          </div>
+        </li>    
+      </ul>
+    </div>
+  </form>
+  <footer>
+    <div class="container">
+       <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">Varun Anusheel</a>
+        </small>
+      </div>
+  </footer>
+
+</body>
+</html>

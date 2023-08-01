@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/css/projects.css">
+  <link rel="stylesheet" type="text/css" href="/css/elements.css">
+
+  <!--========== IONICONS ==========-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <title>Projects</title>
+
+</head>
+<body>
+
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+    <ion-icon name="chevron-up-outline" title="Scroll to Top" class="scrolltop__icon"></ion-icon>
+    <!-- <span class="material-icons scrolltop__icon">keyboard_arrow_up</span> -->
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+      <nav class="nav bd-container">
+          <div class="nav__logo"><img src="/img/microsoft-logo.png" alt="LOGO" onclick = "logoclick()"></div>
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item"><a href="/#home" class="nav__link">Home</a></li>
+                  <li class="nav__item"><a href="/#about" class="nav__link">About</a></li>
+                  <li class="nav__item"><a href="/#projects" class="nav__link">Projects</a></li>
+                  <li class="nav__item"><a href="/#contact" class="nav__link">Contact</a></li>
+              </ul>
+          </div>
+          <div class="nav__toggle" id="nav-toggle">
+              <button id="menu-toggler" data-class="menu-active" class="hamburger">
+                  <span class="hamburger-line hamburger-line-top"></span>
+                  <span class="hamburger-line hamburger-line-middle"></span>
+                  <span class="hamburger-line hamburger-line-bottom"></span>
+              </button>
+          </div>
+      </nav>
+  </header>
+
+<!-- <div class="page_title new_page_title"><h1>Projects</h1></div> -->
+
+<div class="tabs">
+  
+  <input type="radio" id="tab1" name="tab-control" checked>
+  <input type="radio" id="tab2" name="tab-control">
+  <!--   <input type="radio" id="tab3" name="tab-control">  
+  <input type="radio" id="tab4" name="tab-control"> -->
+  <ul>
+    <li title="Current Projects"><label for="tab1" role="button"><span>Current Projects</span></label></li>
+    <li title="Previous Projects"><label for="tab2" role="button"><span>Previous Projects</span></label></li>
+  </ul>
+  
+  <div class="slider"><div class="indicator"></div></div>
+  <div class="content">
+    <section>
+      <div id = "current_projects" class="projects_slider_container">
+      <% for(var i=0; i<curr_aptdata.length; i++) {%>
+        <div class="card">
+          <figure class="card__thumb">
+            <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
+            <figcaption class="card__caption">
+              <h2 class="card__title"><%= locals.curr_aptdata[i].apt_name%></h2>
+              <p class="card__snippet"><%= locals.curr_aptdata[i].apt_area%></p>
+              <a href="<%= '/projects/'+locals.curr_aptdata[i].apt_name %>" target="_blank" class="card__button">Know More →</a>
+            </figcaption>
+          </figure>
+        </div>
+      <% } %>
+      </div>
+    </section>
+
+
+    <section>
+      <div id = "previous_projects" class="projects_slider_container">
+      <% for(var i=0; i<prev_aptdata.length; i++) {%>
+        <div class="card">
+          <figure class="card__thumb">
+            <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
+            <figcaption class="card__caption">
+              <h2 class="card__title"><%= locals.prev_aptdata[i].apt_name%></h2>
+              <p class="card__snippet"><%= locals.prev_aptdata[i].apt_area%></p>
+              <a href="<%= '/projects/'+locals.prev_aptdata[i].apt_name %>" target="_blank" class="card__button">Know More →</a>
+            </figcaption>
+          </figure>
+        </div>
+      <% } %>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="/js/projects.js"></script>
+
+</body>
+</html>

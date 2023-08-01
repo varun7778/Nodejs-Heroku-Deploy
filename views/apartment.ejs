@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/css/apartment_page.css">
+  <link rel="stylesheet" type="text/css" href="/css/elements.css">
+
+  <!--========== IONICONS ==========-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+  <title><%= locals.apt_name || 'Apartment Page' %></title>
+</head>
+<body>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+      <nav class="nav bd-container">
+          <div class="nav__logo"><img src="/img/microsoft-logo.png" alt="LOGO" onclick = "logoclick()"></div>
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item"><a href="/#home" class="nav__link">Home</a></li>
+                  <li class="nav__item"><a href="/#about" class="nav__link">About</a></li>
+                  <li class="nav__item"><a href="/#projects" class="nav__link">Projects</a></li>
+                  <li class="nav__item"><a href="/#contact" class="nav__link">Contact</a></li>
+              </ul>
+          </div>
+          <div class="nav__toggle" id="nav-toggle">
+              <button id="menu-toggler" data-class="menu-active" class="hamburger">
+                  <span class="hamburger-line hamburger-line-top"></span>
+                  <span class="hamburger-line hamburger-line-middle"></span>
+                  <span class="hamburger-line hamburger-line-bottom"></span>
+              </button>
+          </div>
+      </nav>
+  </header>
+
+
+<section class="mobiledesign">
+  <div class="contentpage">
+    <div class="top_half">
+      <div class="apartment_page_title"><h1><%= locals.apt_name || 'Default_Aptname' %></h1></div>
+      <div class="info-container">
+        <div class="apartment-info-container">
+          <div class="info-text">
+            <div class="project-info"><span><b>Project Info</b></span></div>
+            <ul class="info-list">
+              <li class="info-item">
+                <span><b>Category:</b> Residential Apartment</span>
+              </li>
+              <li class="info-item">
+                <span><b>Total Flats:</b><%= locals.owner_name || 'Default_Ownername' %></span>
+              </li>
+              <% if(locals.completed_on !== null) {%>
+              <li class="info-item">
+                <span><b>Completed On:</b><%= locals.completed_on.toLocaleDateString() || 'Default_Completed_on' %></span>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+
+
+          <a href = "https://share.internxt.com/d/sh/file/d8ae82ed4b835f89cb73/1014770450f7ef21b20f4df18a85f7df720fa45b4005acf385a485e9abe49ca4" target="_blank">    
+          <button class="button">
+            <div class="icon">
+              <div class="arrow"></div>
+            </div>
+              &#66;rochure
+          </button>
+          </a>
+        </div>
+        <!-- Image slider -->
+        <div class="img_window">
+          <div class="img_container">
+            <img class="img" src="https://d3hne3c382ip58.cloudfront.net/files/uploads/bookmundi/resized/cmsfeatured/holland-tour-highlights-1501738379-1000X561.jpg">               
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more-info-container">
+      <div class="map-container">
+        <iframe src = <%= locals.gmap_link || 'Default_Gmaplink' %> style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe> 
+      </div>
+
+      <div class="address-container">
+        <div class="address-title"><span><b>ADDRESS</b></span></div>
+        <span class="apartment-address"><%= locals.apt_address || 'Default_Aptaddress' %> </span>
+      </div>
+    </div>
+
+    <div class="mobile_container">
+      <!-- main images -->
+      <div class="mobile_holder">
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img1 %> alt="" />
+        </div>
+
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img2 %>/>
+        </div>
+
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img3 %>/>
+        </div>
+          
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img4 %>/>
+        </div>
+
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img5 %>/>
+        </div>
+          
+        <div class="mobile_slides">
+          <img src= <%= locals.images.img6 %>/>
+        </div>
+      </div>
+
+      <div class="mobile_prevContainer"><a class="mobile_prev" onclick="mobile_plusSlides(-1)">
+        <svg viewBox="0 0 24 24">
+        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+    </svg>
+        </a></div>
+      <div class="mobile_nextContainer"><a class="mobile_next" onclick="mobile_plusSlides(1)">
+        <svg viewBox="0 0 24 24">
+      <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+    </svg>
+        </a></div>
+
+      <div class="mobile_caption-container">
+        <p id="mobile_caption"></p>
+      </div>
+
+      <!-- thumnails in a row -->
+      <div class="mobile_row">
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img1 %> onclick="mobile_currentSlide(1)" alt="Caption One">
+        </div>
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img2 %> onclick="mobile_currentSlide(2)" alt="Caption Two">
+        </div>
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img3 %> onclick="mobile_currentSlide(3)" alt="Caption Three">
+        </div>
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img4 %> onclick="mobile_currentSlide(4)" alt="Caption Four">
+        </div>
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img5 %> onclick="mobile_currentSlide(5)" alt="Caption Five">
+        </div>    
+        <div class="mobile_column">
+          <img class="mobile_slide-thumbnail" src= <%= locals.images.img6 %> onclick="mobile_currentSlide(6)" alt="Caption Six">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="webdesign">
+  <div class="half-section-top">
+    <div class="apartment-info-container">
+      <div class="apartment_page_title"><h1><%= locals.apt_name || 'Default_Aptname' %></h1></div>
+      <div class ="apt-info"><p><%= locals.about_apt || 'Default_Aboutapt' %></p></div>
+      <div class="info-text">
+        <div class="project-info"><span><b>Project Info</b></span></div>
+        <ul class="info-list">
+          <li class="info-item">
+            <span><b>Category:</b> Residential Apartment</span>
+          </li>
+          <li class="info-item">
+            <span><b>Total Flats:</b><%= locals.owner_name || 'Default_Ownername' %></span>
+          </li>
+          <% if(locals.completed_on !== null) {%>
+            <li class="info-item">
+              <span><b>Completed On: </b><%= locals.completed_on.toLocaleDateString() || 'Default_Completed_on' %></span>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+
+      <button class="button">
+        <div class="icon">
+          <div class="arrow"></div>
+        </div>
+          &#66;rochure
+      </button>
+
+
+    </div>
+    
+    <div class="img_window">
+      <div class="img_container">
+        <img class="img" src="https://d3hne3c382ip58.cloudfront.net/files/uploads/bookmundi/resized/cmsfeatured/holland-tour-highlights-1501738379-1000X561.jpg">
+      </div>
+    </div>   
+  </div>
+
+  <div class="half-section-bottom">
+    <div class="row-flex">
+    <!-- Image slider -->
+      <div class="web_container">
+        <!-- main images -->
+        <div class="web_holder">
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1505438157249-00e1b44ee34f?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=dfc554074f522ec42818a052152dac21g" alt="" />
+          </div>
+
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1515870672913-a4c298575776?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=aa80486fd3343134706e785c034b339d">
+          </div>
+
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1521651201144-634f700b36ef?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e26ec8c74dc99aff53a60741538cad5f">
+          </div>
+            
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=583c2bf56c8006e507e2a9905fc1e54c">
+          </div>
+
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=69093505f999d8170e9a1aab3771c07e">
+          </div>
+            
+          <div class="web_slides">
+            <img src="https://images.unsplash.com/photo-1485199433301-8b7102e86995?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=c7783fe3a697b1a2248450120435cbc3">
+          </div>
+        </div>
+
+        <div class="web_prevContainer"><a class="web_prev" onclick="web_plusSlides(-1)">
+          <svg viewBox="0 0 24 24">
+          <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+      </svg>
+          </a></div>
+        <div class="web_nextContainer"><a class="web_next" onclick="web_plusSlides(1)">
+          <svg viewBox="0 0 24 24">
+        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+      </svg>
+          </a></div>
+
+        <div class="web_caption-container">
+          <p id="web_caption"></p>
+        </div>
+
+        <!-- thumnails in a row -->
+        <div class="web_row">
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1505438157249-00e1b44ee34f?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=dfc554074f522ec42818a052152dac21g" onclick="web_currentSlide(1)" alt="Caption One">
+          </div>
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1515870672913-a4c298575776?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=aa80486fd3343134706e785c034b339d" onclick="web_currentSlide(2)" alt="Caption Two">
+          </div>
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1521651201144-634f700b36ef?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e26ec8c74dc99aff53a60741538cad5f" onclick="web_currentSlide(3)" alt="Caption Three">
+          </div>
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=583c2bf56c8006e507e2a9905fc1e54c" onclick="web_currentSlide(4)" alt="Caption Four">
+          </div>
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=69093505f999d8170e9a1aab3771c07e" onclick="web_currentSlide(5)" alt="Caption Five">
+          </div>    
+          <div class="web_column">
+            <img class="web_slide-thumbnail" src="https://images.unsplash.com/photo-1485199433301-8b7102e86995?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=c7783fe3a697b1a2248450120435cbc3" onclick="web_currentSlide(6)" alt="Caption Six">
+          </div>
+        </div>
+      </div> 
+      <div class="column-flex row2">   
+        <div class="address-container">
+          <div class="address-title"><span><b>ADDRESS</b></span></div>
+          <span class="apartment-address"><%= locals.apt_address || 'Default_Aptaddress' %></span>
+        </div>
+        <div class="map-container">
+          <iframe src = <%= locals.gmap_link || 'Default_Gmaplink' %> style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe> 
+        </div>  
+      </div> 
+    </div>  
+  </div> 
+</section>
+
+<footer class="footer">
+  <div class="main-footer">
+    <div class="contact-details">
+      <h1>Contact Us</h1>
+      <li>
+        <div class="fa fa-phone"></div><a href="tel:+919326048690">+91 0987654321</a></li>
+      <li>
+        <div class="fa fa-envelope"></div><a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></li>
+      </li>
+    </div>
+
+    <div class="info" data-aos="fade-up">
+      <h1>Social Media</h1>
+      <div class="sociallogos">
+        <div class="logobox">
+          <a href="#" class="fa fa-instagram"></a>
+          <a href="#" class="fa fa-whatsapp"></a>
+          <a href="#" class="fa fa-facebook"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "copyrights"><p>© Copyright 2021 All Rights Reserved</p></div>
+</footer>
+
+
+<!--========== SCROLL REVEAL ==========-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script src="/js/apartment.js"></script>
+
+</body>
+</html>

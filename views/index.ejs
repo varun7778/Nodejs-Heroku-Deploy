@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== IONICONS ==========-->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <!--========== CSS ==========-->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/elements.css">
+
+        <title><%= locals.name || 'Default_Name' %></title>
+    </head>
+    <body>
+
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <ion-icon name="chevron-up-outline" title="Scroll to Top" class="scrolltop__icon"></ion-icon>
+            <!-- <span class="material-icons scrolltop__icon">keyboard_arrow_up</span> -->
+        </a>
+
+        <!--========== HEADER ==========-->
+        <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <div class="nav__logo"><img src="/img/microsoft-logo.png" alt="LOGO" onclick = "logoclick()"></div>
+
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav__toggle" id="nav-toggle">
+                    <button id="menu-toggler" data-class="menu-active" class="hamburger">
+                        <span class="hamburger-line hamburger-line-top"></span>
+                        <span class="hamburger-line hamburger-line-middle"></span>
+                        <span class="hamburger-line hamburger-line-bottom"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <!--========== HOME ==========-->
+            <section class="home section" id="home">
+                <div class="home__container bd-container bd-grid-home">
+                    <div class="home__data">
+                        <h1 class="home__title"><%= locals.name || 'Default_Name' %></h1>
+                        <h2 class="home__subtitle"><span class="type-writter"></span></h2>
+                        <!-- <a href="#" class="button">View Menu</a> -->
+                    </div>
+    
+                    <img src="/img/home.png" alt="" class="home__img">
+                    <div class="icon_container"><a href="#about">
+                        <ion-icon name="chevron-down-outline" class="down-arrow"></ion-icon>
+                      </a>
+                    </div>
+                </div>
+            </section>
+
+            <!--========== ABOUT ==========-->
+            <section class="about section bd-container" id="about">
+                <div class="page_title"><h1>About Me</h1></div>
+                <div class="about__container  bd-grid">
+                    <img src="/img/about.jpg" alt="" class="about__img">
+
+                    <div class="about__data">
+                        <h2 class="section-title about__initial"><%= locals.aboutme_title || 'Default_Aboutme_title' %></h2>
+                        <p class="about__description"><%= locals.aboutme_text || 'Default_Aboutme_text' %></p>
+                        <a href="#" class="button">Learn More →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!--========== PROJECTS ==========-->
+            <section class="projects section bd-container" id="projects">
+                <div class="page_title"><h1>Projects</h1></div>
+                <div class="slider_container hide-scroll">
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[0].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[0].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[0].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[1].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[1].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[1].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/71u2fOofI-U/300x510" alt="Picture by Nathan Dumlao" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[2].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[2].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[2].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[3].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[3].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[3].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[4].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[4].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[4].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[5].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[5].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[5].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card mobile_hide">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[6].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[6].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[6].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="card mobile_hide">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.apt_list[7].apt_name || 'Default_Aptname' %></h2>
+                          <p class="card__snippet"><%= locals.apt_list[7].apt_area || 'Default_Aptarea' %></p>
+                          <a href="<%= '/projects/'+locals.apt_list[7].apt_name %>" target="_blank" class="card__button">Know More →</a>
+                        </figcaption>
+                      </figure>
+                    </div>
+                    <div class="double_row_grid">
+                      <a href="projects">
+                        <ion-icon name="arrow-forward-circle-outline" title="View More" class="view_more_icon"></ion-icon>
+                        <p class="view_more_text">View More</p>
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--========== CONTACT PAGE ==========-->
+            <section class="section bd-container" id="contact">
+              <div class="page_title"><h1>Contact</h1></div>
+              <div class="vetical_flex">
+                <div class="contact__container contact-wrapper">
+                    <div class="contact__data">
+                        <p class="contact__description"><%= locals.contact_text || 'Default_Contact_text' %></p>
+                    </div>
+                    <div class="contact__button">
+                        <a href="tel:+<%= locals.mobile_number || 'Default_Mobile_number' %>" id="contact" class="button">Contact Me</a>
+                    </div>
+                </div>
+                <div> 
+                    <div class="contact-wrapper">
+                    <!-- Left contact page --> 
+                      <iframe src=<%= locals.gmap_link || 'Default_Gmap_link' %> allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+    
+                    <!-- Right contact page --> 
+    
+                      <div class="direct-contact-container">
+                        <ul class="contact-list">
+                          <li class="list-item"><ion-icon name="pin-outline"></ion-icon>
+                            <span class="contact-text"><%= locals.office_address || 'Default_Office_address' %></span>
+                          </li>
+                          <li class="list-item">
+                            <ion-icon name="call-outline"></ion-icon>
+                            <span class="contact-text"><a href="tel:<%= locals.mobile_number || 'Default_Mobile_number' %>" title="Give me a call"><%= locals.mobile_number || 'Default_Mobile_number' %></a></span>
+                          </li>
+                          <li class="list-item">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <span class="contact-text"><a href="mailto:<%= locals.email || 'Default_Email' %>" title="Send me an email"><%= locals.email || 'Default_Email' %></a></span>
+                          </li>
+                        </ul>
+
+                        <hr>
+
+                        <ul class="social-media-list">
+                          <li><a href=<%= locals.whatsapp || 'Default_Whatsapp' %> target="new" title="Whatsapp" class="contact-icon">
+                            <ion-icon name="logo-whatsapp"></ion-icon></a>
+                          </li>
+                          <li><a href= <%= locals.instagram || 'Default_Instagram' %> target="new" class="contact-icon">
+                            <ion-icon name="logo-instagram"></ion-icon></a>
+                          </li>
+                          <li><a href=<%= locals.facebook || 'Default_Facebook' %> target="new" class="contact-icon">
+                            <ion-icon name="logo-facebook"></ion-icon></a>
+                          </li>       
+                        </ul>
+
+                        <hr>
+                      </div>
+                    </div>  
+                </div>
+              </div>
+            </section>            
+        </main>
+
+
+        <!--========== GOOGLE MAPS ==========-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+
+        <!--========== TYPED JS ==========-->
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="/js/main.js"></script>
+    </body>
+</html>

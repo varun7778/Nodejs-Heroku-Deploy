@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--========== IONICONS ==========-->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass:300,400,600,800"></link>
+
+        <link rel="stylesheet" href="/css/admin.css">
+        <link rel="stylesheet" href="/css/elements.css">
+    </head>
+    <body>
+
+       <!--========== LOGOUT BUTTON ==========-->
+
+      <button  onclick="redirect()" id="logout_button" class="logoutButton logoutButton--light">
+        <svg class="doorway" viewBox="0 0 100 100">
+          <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+          <path class="bang" d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z" />
+        </svg>
+        <svg class="figure" viewBox="0 0 100 100">
+          <circle cx="52.1" cy="32.4" r="6.4" />
+          <path d="M50.7 62.8c-1.2 2.5-3.6 5-7.2 4-3.2-.9-4.9-3.5-4-7.8.7-3.4 3.1-13.8 4.1-15.8 1.7-3.4 1.6-4.6 7-3.7 4.3.7 4.6 2.5 4.3 5.4-.4 3.7-2.8 15.1-4.2 17.9z" />
+          <g class="arm1">
+            <path d="M55.5 56.5l-6-9.5c-1-1.5-.6-3.5.9-4.4 1.5-1 3.7-1.1 4.6.4l6.1 10c1 1.5.3 3.5-1.1 4.4-1.5.9-3.5.5-4.5-.9z" />
+            <path class="wrist1" d="M69.4 59.9L58.1 58c-1.7-.3-2.9-1.9-2.6-3.7.3-1.7 1.9-2.9 3.7-2.6l11.4 1.9c1.7.3 2.9 1.9 2.6 3.7-.4 1.7-2 2.9-3.8 2.6z" />
+          </g>
+          <g class="arm2">
+            <path d="M34.2 43.6L45 40.3c1.7-.6 3.5.3 4 2 .6 1.7-.3 4-2 4.5l-10.8 2.8c-1.7.6-3.5-.3-4-2-.6-1.6.3-3.4 2-4z" />
+            <path class="wrist2" d="M27.1 56.2L32 45.7c.7-1.6 2.6-2.3 4.2-1.6 1.6.7 2.3 2.6 1.6 4.2L33 58.8c-.7 1.6-2.6 2.3-4.2 1.6-1.7-.7-2.4-2.6-1.7-4.2z" />
+          </g>
+          <g class="leg1">
+            <path d="M52.1 73.2s-7-5.7-7.9-6.5c-.9-.9-1.2-3.5-.1-4.9 1.1-1.4 3.8-1.9 5.2-.9l7.9 7c1.4 1.1 1.7 3.5.7 4.9-1.1 1.4-4.4 1.5-5.8.4z" />
+            <path class="calf1" d="M52.6 84.4l-1-12.8c-.1-1.9 1.5-3.6 3.5-3.7 2-.1 3.7 1.4 3.8 3.4l1 12.8c.1 1.9-1.5 3.6-3.5 3.7-2 0-3.7-1.5-3.8-3.4z" />
+          </g>
+          <g class="leg2">
+            <path d="M37.8 72.7s1.3-10.2 1.6-11.4 2.4-2.8 4.1-2.6c1.7.2 3.6 2.3 3.4 4l-1.8 11.1c-.2 1.7-1.7 3.3-3.4 3.1-1.8-.2-4.1-2.4-3.9-4.2z" />
+            <path class="calf2" d="M29.5 82.3l9.6-10.9c1.3-1.4 3.6-1.5 5.1-.1 1.5 1.4.4 4.9-.9 6.3l-8.5 9.6c-1.3 1.4-3.6 1.5-5.1.1-1.4-1.3-1.5-3.5-.2-5z" />
+          </g>
+        </svg>
+        <svg class="door" viewBox="0 0 100 100">
+          <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+          <circle cx="66" cy="50" r="3.7" />
+        </svg>
+        <span class="button-text">LOGOUT</span>
+      </button>
+
+
+        <!--Radio version of tabs-->
+
+      <div class="tabset">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">Add Apartment</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+        <label for="tab2">Edit Apartment</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+        <label for="tab3">Edit Main Page</label>
+        
+        <div class="tab-panels">
+          <section class="tab-panel">
+            <h2>Add New Apartment!</h2>
+            
+
+            <form action="admin/create_apt" method="POST" class="my-form">
+              <div class="container" id="tabOne">
+                <ul>
+                  <li>
+                    <div class="grid grid-2">
+                      <input type="text" placeholder="Apt Name" name="apt_name" required>  
+                      <input type="text" placeholder="Apt Area" name="apt_area" required>
+                    </div>
+                  </li>
+                  <li>
+                    <textarea type="text" placeholder="About the Apartment" name="about_apt" required></textarea>
+                  </li>
+                  <li>
+                    <textarea type="text" placeholder="Apartment address" name="apt_address" required></textarea>
+                  </li>  
+                  <li>
+                    <input type="text" placeholder="Googlemap link" name="gmap_link" required></input>
+                  </li> 
+                  <li>
+                    <div class="grid grid-2">
+                      <input type="text" placeholder="Owner Name" name="owner_name" required>  
+                      <input type="date" placeholder="Apt completion date" name="completed_on">
+                    </div>
+                  </li>
+
+                  <li>
+                    <span>Uplad the brochure to this link: <a href="https://drive.internxt.com" target="_blank">Here</a></span>
+                  </li>
+
+                  <li>
+                    <input placeholder="Brochure download link" name="brochure" required></input>
+                  </li> 
+
+                  <li>
+                    <span>Uplad all individual images to this link: <a href="https://varun-anusheel.imgbb.com/" target="_blank">Here</a></span>
+                  </li>
+                  
+                  <li>
+                    <input placeholder="Image1 Link" name="image1_link" required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Image2 Link" name="image2_link" required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Image3 Link" name="image3_link" required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Image4 Link" name="image4_link" required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Image5 Link" name="image5_link" required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Image6 Link" name="image6_link" required></input>
+                  </li>                 
+                  <li>
+                    <div class="grid grid-3">
+                      <div class="required-msg">REQUIRED FIELDS</div>
+                      <button class="btn-grid" type="submit" disabled>
+                        <span class="back">
+                          <ion-icon name="cloud-upload-outline" class="icon"></ion-icon>
+                        </span>
+                        <span class="front">SUBMIT</span>
+                      </button>
+                      <button class="btn-grid" type="reset" disabled>
+                        <span class="back">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+                        </span>
+                        <span class="front">RESET</span>
+                      </button> 
+                    </div>
+                  </li>    
+                </ul>
+              </div>
+            </form>
+            <footer>
+              <div class="container">
+                <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">Varun Anusheel</a>
+                </small>
+              </div>
+            </footer>
+
+
+        </section>
+
+
+          <section class="tab-panel">
+            <div class="container">
+              <!-- <div class="searchbox">
+                <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for card name..">
+              </div> -->
+              <div class="centering">
+              <div class="omrs-input-group">
+                <label class="omrs-input-underlined">
+                  <input oninput="this.value = this.value.toUpperCase()" id="myFilter" class="form-control" onkeyup="myFunction()" required>
+                  <span class="omrs-input-label">Search</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </label>
+              </div>
+              </div>
+
+              <div class="row projects_container" id="myApartments">
+
+
+                  <% for(var i=0; i<aptdata.length; i++) {%>
+                    <div class="card">
+                      <figure class="card__thumb">
+                        <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
+                        <figcaption class="card__caption">
+                          <h2 class="card__title"><%= locals.aptdata[i].apt_name%></h2>
+                          <p class="card__snippet"><%= locals.aptdata[i].apt_area%></p>
+                          <div class="icons_container">
+                            <a href= "<%= 'admin/delete_'+locals.aptdata[i].apt_name %>" class="button icon-button">
+                              <ion-icon name="trash-outline" class="icon-button__icon"></ion-icon>
+                            </a>
+                            <a href= "<%= 'admin/edit_'+locals.aptdata[i].apt_name %>" class="button icon-button">
+                              <ion-icon name="pencil-outline" class="icon-button__icon"></ion-icon>
+                            </a>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </div>
+                  <% } %>
+
+                </div>
+              </div>
+          </section>
+
+
+          <section class="tab-panel">
+
+            <form action="admin/update_main_page" method="POST" class="my-form">
+              <div class="container">
+                <ul>
+                  <li>
+                    <div class="grid grid-2">
+                      <input type="text" placeholder="Name" name="name" value = '<%= locals.staticdata.name || 'Default_Name'%>' required>  
+                      <input type="text" placeholder="Mobile Number" name="mobile_number" value = <%= locals.staticdata.mobile_number || 'Default_Mobile_Number'%> required>
+                    </div>
+                  </li>
+                  <li>
+                    <textarea type="text" placeholder="About Me Title" name="aboutme_title" required><%= locals.staticdata.aboutme_title || 'Default_Aboutme_Title'%></textarea>
+                  </li>
+                  <li>
+                    <textarea type="text" placeholder="About Me Text" name="aboutme_text" required><%= locals.staticdata.aboutme_text || 'Default_Aboutme_Text'%></textarea>
+                  </li>   
+                  <li>
+                    <textarea placeholder="Contact Text" name="contact_text" required><%= locals.staticdata.contact_text || 'Default_Contact_Text'%></textarea>
+                  </li> 
+                  <li>
+                    <textarea placeholder="Office Address" name="office_address" required><%= locals.staticdata.office_address || 'Default_Office_Address'%></textarea>
+                  </li>
+                  <li>
+                    <input type="text" placeholder="Googlemap link" name="gmap_link" value = <%= locals.staticdata.gmap_link || 'Default_Gmap_Link'%> required></input>
+                  </li> 
+                  <li>
+                    <div class="grid grid-2">
+                      <input type="text" placeholder="Email ID" name="email" value = <%= locals.staticdata.email || 'Default_Email'%> required>
+                      <input type="text" placeholder="Whatsapp" name="whatsapp" value = <%= locals.staticdata.whatsapp || 'Default_whatsapp'%> required>  
+                    </div>
+                  </li>
+
+                  <li>
+                    <input placeholder="Facebook ID Link" name="facebook" value = <%= locals.staticdata.facebook || 'Default_facebook'%> required></input>
+                  </li> 
+                  <li>
+                    <input placeholder="Instagram Link" name="instagram" value = <%= locals.staticdata.instagram || 'Default_instagram'%> required></input>
+                  </li> 
+
+                  <li>
+                    <div class="grid grid-3">
+                      <div class="required-msg">REQUIRED FIELDS</div>
+                      <button class="btn-grid" type="submit" id="update_submit">
+                        <span class="back">
+                          <ion-icon name="cloud-upload-outline" class="icon"></ion-icon>
+                        </span>
+                        <span class="front">SUBMIT</span>
+                      </button>
+                      <button class="btn-grid" type="reset" id="update_reset">
+                        <span class="back">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+                        </span>
+                        <span class="front">RESET</span>
+                      </button> 
+                    </div>
+                  </li>    
+                </ul>
+              </div>
+            </form>
+            <footer>
+              <div class="container">
+                <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">Varun Anusheel</a>
+                </small>
+              </div>
+            </footer>
+
+          </section>
+        </div>
+        
+      </div>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!--========== MAIN JS ==========-->
+      <script src="/js/admin.js"></script>
+
+    </body>
+</html>
